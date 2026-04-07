@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: ai-meeting-assistant
+    runtime: docker
+    plan: free
+    branch: main
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: MAX_AUDIO_SIZE_MB
+        value: 25
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: LLM_MODEL
+        value: gpt-4o
+      - key: CONFIDENCE_THRESHOLD
+        value: 0.75
